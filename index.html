@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DoneList — 记录每一天的成就</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>✅ DoneList</h1>
+      <p class="subtitle">记录完成，收获成就感</p>
+    </header>
+
+    <nav class="date-nav">
+      <button class="nav-btn" id="prevDate">◀</button>
+      <div class="date-display">
+        <span id="currentDate">今天</span>
+        <span class="date-sub" id="dateSub">6月13日 周五</span>
+      </div>
+      <button class="nav-btn" id="nextDate">▶</button>
+    </nav>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span class="stat-num" id="todayCount">0</span>
+        <span class="stat-label">今日完成</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="streakCount">0</span>
+        <span class="stat-label">连续记录</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="totalCount">0</span>
+        <span class="stat-label">总记录数</span>
+      </div>
+    </section>
+
+    <section class="input-area">
+      <div class="input-wrap">
+        <input
+          type="text"
+          id="doneInput"
+          placeholder="刚刚完成了什么？按 Enter 记录..."
+          autocomplete="off"
+        >
+        <button class="add-btn" id="addBtn">+</button>
+      </div>
+    </section>
+
+    <section class="list-area">
+      <ul class="done-list" id="doneList">
+        <!-- 动态生成 -->
+      </ul>
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🌱</div>
+        <p>今天还没有记录哦</p>
+        <p class="empty-hint">完成一件事，就记下来吧！</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>DoneList · 每一天都值得被记录</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
