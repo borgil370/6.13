@@ -391,7 +391,48 @@
     if (e.target === els.modalOverlay) els.modalOverlay.classList.remove('show');
   });
 
+  // Demo Data
+  function seedDemoData() {
+    const data = loadData();
+    const hasAny = Object.keys(data).length > 0;
+    if (hasAny) return;
+
+    const demo = {
+      '2026-06-13': [
+        { id: 1718246400001, text: '重构了 DoneList 的能量追踪逻辑，改成了 INTP 专版', time: '10:30', timestamp: 1718246400001, energy: 'flow', tags: ['前端', 'INTP'], note: '发现「状态追踪」比「任务追踪」更符合内在动机模型。Ti 需要的是理解自己，而不是被安排。' },
+        { id: 1718253600002, text: '读完了《有限与无限的游戏》最后一章', time: '14:20', timestamp: 1718253600002, energy: 'normal', tags: ['阅读', '哲学'], note: '「边界是视角的产物」——这句话让我重新思考了为什么我总在不同领域之间跳转。' },
+        { id: 1718260800003, text: '给朋友解释清楚了为什么 LLM 不是真正的「理解」', time: '16:45', timestamp: 1718260800003, energy: 'flow', tags: ['AI', '哲学'], note: '用「中文房间」+ 「因果推理」双线论证，对方终于 get 到了。输出倒逼输入是真的。' },
+      ],
+      '2026-06-12': [
+        { id: 1718160000004, text: '写了一个自动解析 MBTI 认知功能的正则表达式', time: '01:15', timestamp: 1718160000004, energy: 'flow', tags: ['编程', '类型学'], note: '半夜突然想到可以用栈来匹配判断/感知功能的层级。Ne 的脑洞总是在凌晨爆发。' },
+        { id: 1718196000005, text: '整理了浏览器书签栏，删掉了 200+ 个不再感兴趣的链接', time: '15:00', timestamp: 1718196000005, energy: 'low', tags: ['整理'], note: '低能量日的经典行为：用整理来逃避真正的创造性工作。但至少书签栏清爽了。' },
+        { id: 1718206800006, text: '看了一个关于「分析瘫痪」的心理学视频', time: '18:00', timestamp: 1718206800006, energy: 'normal', tags: ['心理学', 'INTP'], note: '原来过度分析是恐惧承诺的表现。Ti 的无限分解，有时候是在拖延决策。' },
+      ],
+      '2026-06-11': [
+        { id: 1718107200007, text: '用钢琴弹出了《星际穿越》主题曲的完整版', time: '20:00', timestamp: 1718107200007, energy: 'flow', tags: ['音乐'], note: '手指肌肉记忆终于跟上了。心流状态下的时间感完全消失，弹完发现过了两小时。' },
+        { id: 1718078400008, text: '和朋友辩论了 2 小时：自由意志是否存在', time: '12:00', timestamp: 1718078400008, energy: 'normal', tags: ['哲学', '社交'], note: '从决定论辩到量子随机性，再辩到「相容论」。虽然谁也没说服谁，但 Ne 得到了充分喂养。' },
+      ],
+      '2026-06-10': [
+        { id: 1717992000009, text: '看懂了一篇关于 Transformer 注意力机制的论文', time: '09:30', timestamp: 1717992000009, energy: 'flow', tags: ['AI', '阅读'], note: '关键是画了张图把 Q/K/V 的交互可视化出来。Ti 需要把抽象符号转化为内在模型才能真正理解。' },
+        { id: 1718020800010, text: '尝试用 Rust 重写之前写的 Python 脚本', time: '17:20', timestamp: 1718020800010, energy: 'normal', tags: ['编程', 'Rust'], note: ' borrow checker 杀了我很久，但编译通过的那一刻有种「被严格逻辑验证」的爽感。' },
+      ],
+      '2026-06-08': [
+        { id: 1717826400011, text: '回复了积压一周的邮件', time: '11:00', timestamp: 1717826400011, energy: 'low', tags: ['生活'], note: 'Si 的维护性任务总是让我 drained。但做完后焦虑感下降了很多，值得记录。' },
+      ],
+      '2026-06-07': [
+        { id: 1717754400012, text: '画了一张思维导图梳理康德的认识论框架', time: '14:30', timestamp: 1717754400012, energy: 'flow', tags: ['哲学', '笔记'], note: '把「先天范畴」「先验统觉」「物自体」全部连成了网。Ti 的终极快感：把混沌建成体系。' },
+        { id: 1717776000013, text: '发现了一个新的独立游戏，玩法融合了拓扑学和叙事', time: '20:00', timestamp: 1717776000013, energy: 'normal', tags: ['游戏', '设计'], note: '游戏叫 Manifold Garden。玩了两小时，Ne 疯狂发射关联：这和埃舍尔的画、非欧几何、甚至递归都通。' },
+      ],
+      '2026-06-05': [
+        { id: 1717567200014, text: '熬夜写完了一个小游戏的原型，核心机制是「时间循环+信息累积」', time: '02:30', timestamp: 1717567200014, energy: 'flow', tags: ['游戏设计', '编程'], note: '灵感来自外祖母悖论 + Outer Wilds。原型很粗糙但 playable。Ti-Ne 的创造高峰通常在深夜。' },
+      ],
+    };
+
+    saveData(demo);
+  }
+
   // Init
+  seedDemoData();
   render();
   els.doneInput.focus();
 })();
