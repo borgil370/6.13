@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DoneList — 记录每一天的成就</title>
+  <title>DoneList — INTP 的成就纪念碑</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app">
     <header class="header">
-      <h1>✅ DoneList</h1>
-      <p class="subtitle">记录完成，收获成就感</p>
+      <h1>DoneList</h1>
+      <p class="subtitle">不是任务清单，是成就纪念碑</p>
+      <p class="motto">"INTP 不需要被安排，只需要被看见"</p>
     </header>
 
     <nav class="date-nav">
@@ -25,15 +26,15 @@
     <section class="stats">
       <div class="stat-card">
         <span class="stat-num" id="todayCount">0</span>
-        <span class="stat-label">今日完成</span>
+        <span class="stat-label">今日成就</span>
       </div>
       <div class="stat-card">
         <span class="stat-num" id="streakCount">0</span>
-        <span class="stat-label">连续记录</span>
+        <span class="stat-label">探索日</span>
       </div>
       <div class="stat-card">
-        <span class="stat-num" id="totalCount">0</span>
-        <span class="stat-label">总记录数</span>
+        <span class="stat-num" id="flowCount">0</span>
+        <span class="stat-label">心流时刻</span>
       </div>
     </section>
 
@@ -42,27 +43,74 @@
         <input
           type="text"
           id="doneInput"
-          placeholder="刚刚完成了什么？按 Enter 记录..."
+          placeholder="刚刚探索/完成/搞懂了什么？按 Enter 记录..."
           autocomplete="off"
         >
         <button class="add-btn" id="addBtn">+</button>
       </div>
+      <div class="input-meta">
+        <div class="energy-select">
+          <label>状态：</label>
+          <button class="energy-btn active" data-energy="flow" title="完全沉浸，时间消失了">🚀 心流</button>
+          <button class="energy-btn" data-energy="normal" title="正常推进，没什么阻力">⚡ 常态</button>
+          <button class="energy-btn" data-energy="low" title="有点勉强，但还是做了">🐢 低能量</button>
+        </div>
+        <input type="text" id="tagInput" placeholder="#标签1 #标签2（可选）">
+      </div>
+      <textarea id="noteInput" placeholder="关联想法 / 新发现 / 为什么做这个...（可选，INTP 的 Ti 需要出口）" rows="2"></textarea>
+    </section>
+
+    <section class="insights">
+      <button class="insights-toggle" id="insightsToggle">
+        📊 洞察面板 <span class="toggle-arrow">▼</span>
+      </button>
+      <div class="insights-panel" id="insightsPanel">
+        <div class="insights-grid">
+          <div class="insight-block">
+            <h4>🔥 最活跃领域</h4>
+            <div class="tag-cloud" id="topTags">—</div>
+          </div>
+          <div class="insight-block">
+            <h4>⏰ 时间分布</h4>
+            <div class="time-dist" id="timeDist">—</div>
+          </div>
+          <div class="insight-block">
+            <h4>🌊 心流占比</h4>
+            <div class="flow-bar" id="flowBar">
+              <div class="flow-fill" style="width: 0%"></div>
+            </div>
+            <p class="insight-hint" id="flowHint">记录越多，洞察越准</p>
+          </div>
+        </div>
+        <button class="random-btn" id="randomBtn">🎲 随机回顾一个过去的成就</button>
+      </div>
     </section>
 
     <section class="list-area">
-      <ul class="done-list" id="doneList">
-        <!-- 动态生成 -->
-      </ul>
+      <ul class="done-list" id="doneList"></ul>
       <div class="empty-state" id="emptyState">
-        <div class="empty-icon">🌱</div>
-        <p>今天还没有记录哦</p>
-        <p class="empty-hint">完成一件事，就记下来吧！</p>
+        <div class="empty-icon">🌌</div>
+        <p>这片星空还没有点亮</p>
+        <p class="empty-hint">INTP 的成就，往往发生在别人看不见的地方<br>现在，把它记录下来</p>
       </div>
     </section>
 
     <footer class="footer">
-      <p>DoneList · 每一天都值得被记录</p>
+      <p>DoneList · 为 Ti-Ne 而设计 · 你已经在思考，这就够了</p>
     </footer>
+  </div>
+
+  <!-- Random Recall Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-icon">💡</div>
+      <p class="modal-label">来自过去的你</p>
+      <p class="modal-date" id="modalDate"></p>
+      <p class="modal-text" id="modalText"></p>
+      <div class="modal-tags" id="modalTags"></div>
+      <p class="modal-note" id="modalNote"></p>
+    </div>
   </div>
 
   <script src="app.js"></script>
